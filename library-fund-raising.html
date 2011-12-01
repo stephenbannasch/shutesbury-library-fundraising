@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fund-Raising for the New Shutesbury Library and Community Center</title>
+  <script src="raphael-min.js"></script>
+  <script src="g.raphael-min.js"></script>
+  <script src="g.bar-min.js"></script>
+  <script src="library-debt.js"></script>
+  <style type="text/css" media="screen">
+    body {
+      margin: 12px 12px 12px 12px;
+      background-color: white; 
+      width: 1024px; }
+
+    h1 { 
+      font: 28px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      font-weight: bold; }
+
+    p { 
+      font: 24px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      line-height: 1.2em; }
+    
+    ul {
+      width: 100%;
+      margin: 1em;
+      display: inline-block;
+      list-style-type: none;
+      margin: 0.5em 0em 0.5em 0em; }
+      ul li {
+        line-height: 1em;
+        display: inline-table;
+        vertical-align: middle;
+        margin: 1em;
+        padding: 0.2em 1em 0.2em 0em; }
+    
+    #raised {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px #666;
+        width: 230px;
+        height: 640px;
+        background-color: #eee;
+    }
+    #cost {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px #666;
+        width: 230px;
+        height: 640px;
+        background-color: #eee;
+    }
+    #description {
+        width: 300px;
+        height: 640px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Fund-Raising for the New Shutesbury Library and Community Center</h1>
+  <ul>
+    <li id="raised"></li>
+    <li id="cost"></li>
+    <li id='description'>
+      <p>
+        Private fund-raising for the new Shutesbury Library and Community Center is 
+        lowering how much the town will need to borrow.
+      </p>
+      <p>
+        If we reach our fund-raising goal of $400,000 we will have lowered the cost
+        in taxes for an average Shutesbury home from $1.98 a week to just $1.41 a week.
+      </p>
+    </li>
+  </ul>
+</body>
+<script src="graph.js"></script>
+</html>
