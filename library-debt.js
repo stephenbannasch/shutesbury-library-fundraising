@@ -90,7 +90,7 @@ function average_of_additional_library_taxes_per_week(loan_amount, home_value) {
 // average_of_additional_library_taxes_per_week(1250000, 243814)  => 1.7710882264974044
 
 var average_valuation = 243814;
-var amount_raised = 150000;
+var amount_raised = 146200;
 var actual_amount_of_bond = amount_of_bond - amount_raised;
 
 var fund_raising_goal = 400000;
