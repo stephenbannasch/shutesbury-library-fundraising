@@ -27,7 +27,7 @@ window.onload = function () {
        type: "round", 
        colors: colors,
     });
-  r.text(120, 30, "Raised").attr(txtattr1);
+  r.text(120, 30, "Raising Funds").attr(txtattr1);
   r.text(120, 110, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr2);
   r.text(120, 460, dollar_format(amount_raised)).attr(txtattr2);
   r.text(120, 590, "$0").attr(txtattr1);
@@ -38,7 +38,7 @@ window.onload = function () {
         type: "round", 
         colors: colors,
      });
-   c.text(120, 30, "Cost per Week").attr(txtattr1);
+   c.text(120, 30, "Lowers Taxes").attr(txtattr1);
    c.text(120, 110, "Goal\n$" + format(goal_average_weekly_cost, 4)).attr(txtattr2);
    c.text(120, 460, "$" + format(actual_average_weekly_cost, 4)).attr(txtattr2);
    c.text(120, 590, "$" + format(orig_average_weekly_cost, 4)).attr(txtattr1);
