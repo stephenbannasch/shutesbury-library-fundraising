@@ -10,7 +10,7 @@ window.onload = function () {
   function format(n, width) {
    var str = "" + n;
    for (var i = str.length; i < width; i++ ) {
-     str += " ";
+     str += "0";
    }
    return str.slice(0,width)
   }
