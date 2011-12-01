@@ -22,25 +22,25 @@ window.onload = function () {
      txtattr1 = { font: "24px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold"},
      txtattr2 = { font: "24px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold", fill: "#fff" };
 
- r.barchart(5, 40, 195, 590, [[amount_raised], [fund_raising_goal-amount_raised]], 
+ r.barchart(-5, 40, 200, 590, [[amount_raised], [fund_raising_goal-amount_raised]], 
     {
        stacked: true, 
        type: "sharp", 
        colors: colors1,
     });
-  r.text(100, 30, "Raising Funds").attr(txtattr1);
-  r.text(100, 120, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr2);
-  r.text(100, 460, dollar_format(amount_raised)).attr(txtattr2);
-  r.text(100, 590, "$0").attr(txtattr1);
+  r.text(95, 30, "Raising Funds").attr(txtattr1);
+  r.text(95, 120, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr2);
+  r.text(95, 475, dollar_format(amount_raised) + "\nRaised").attr(txtattr2);
+  r.text(95, 590, "$0").attr(txtattr1);
 
-  c.barchart(5, 50, 195, 600, [[fund_raising_goal-amount_raised], [amount_raised]], 
+  c.barchart(-5, 50, 200, 600, [[fund_raising_goal-amount_raised], [amount_raised]], 
      {
         stacked: true, 
         type: "sharp", 
         colors: colors2,
      }).scale(1, -1);
-   c.text(100, 30, "Lowers Taxes").attr(txtattr1);
-   c.text(100, 110, "from\n$" + format(orig_average_monthly_cost, 4)).attr(txtattr1);
-   c.text(100, 240, "to\n$" + format(actual_average_monthly_cost, 4)).attr(txtattr2);
-   c.text(100, 540, "Goal\n$" + format(goal_average_monthly_cost, 4)).attr(txtattr2);
+   c.text(95, 30, "Lowers Taxes").attr(txtattr1);
+   c.text(95, 110, "From $" + format(orig_average_monthly_cost, 4) + "\nper month").attr(txtattr1);
+   c.text(95, 255, "To $" + format(actual_average_monthly_cost, 4)).attr(txtattr2);
+   c.text(95, 545, "Goal\n$" + format(goal_average_monthly_cost, 4)).attr(txtattr2);
 }
