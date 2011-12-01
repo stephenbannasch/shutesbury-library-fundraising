@@ -99,7 +99,7 @@ function average_of_additional_library_taxes_per_month(loan_amount, home_value) 
 }
 
 var average_valuation = 243814;
-var amount_raised = 146200;
+var amount_raised = 154015;
 var actual_amount_of_bond = amount_of_bond - amount_raised;
 
 var fund_raising_goal = 400000;
