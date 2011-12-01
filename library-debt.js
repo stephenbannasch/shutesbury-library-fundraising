@@ -93,6 +93,11 @@ function average_of_additional_library_taxes_per_week(loan_amount, home_value) {
 // average_of_additional_library_taxes_per_week(1400000, 243814)  => 1.9836188136770936
 // average_of_additional_library_taxes_per_week(1250000, 243814)  => 1.7710882264974044
 
+function average_of_additional_library_taxes_per_month(loan_amount, home_value) {
+  var library_taxes = total_additional_taxes_for_library(loan_amount, home_value)
+  return round_to_penny(library_taxes / (22 * 12))
+}
+
 var average_valuation = 243814;
 var amount_raised = 146200;
 var actual_amount_of_bond = amount_of_bond - amount_raised;
@@ -103,3 +108,7 @@ var goal_amount_of_bond = amount_of_bond - fund_raising_goal;
 var orig_average_weekly_cost = average_of_additional_library_taxes_per_week(amount_of_bond, average_valuation);
 var actual_average_weekly_cost = average_of_additional_library_taxes_per_week(actual_amount_of_bond, average_valuation);
 var goal_average_weekly_cost = average_of_additional_library_taxes_per_week(goal_amount_of_bond, average_valuation);
+
+var orig_average_monthly_cost = average_of_additional_library_taxes_per_month(amount_of_bond, average_valuation);
+var actual_average_monthly_cost = average_of_additional_library_taxes_per_month(actual_amount_of_bond, average_valuation);
+var goal_average_monthly_cost = average_of_additional_library_taxes_per_month(goal_amount_of_bond, average_valuation);
