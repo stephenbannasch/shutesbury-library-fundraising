@@ -10,7 +10,7 @@ window.onload = function () {
   function format(n, width) {
    var str = "" + n;
    for (var i = str.length; i < width; i++ ) {
-     str += " ";
+     str += "0";
    }
    return str.slice(0,width)
   }
@@ -39,7 +39,7 @@ window.onload = function () {
         colors: colors,
      });
    c.text(100, 30, "Lowers Taxes").attr(txtattr1);
-   c.text(100, 110, "Goal\n$" + format(goal_average_weekly_cost, 4)).attr(txtattr2);
-   c.text(100, 460, "$" + format(actual_average_weekly_cost, 4)).attr(txtattr2);
-   c.text(100, 590, "$" + format(orig_average_weekly_cost, 4)).attr(txtattr1);
+   c.text(100, 110, "Goal\n$" + format(goal_average_monthly_cost, 4)).attr(txtattr2);
+   c.text(100, 460, "$" + format(actual_average_monthly_cost, 4)).attr(txtattr2);
+   c.text(100, 590, "$" + format(orig_average_monthly_cost, 4)).attr(txtattr1);
 }
