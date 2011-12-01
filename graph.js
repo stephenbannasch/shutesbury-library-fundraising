@@ -1,5 +1,12 @@
 
 window.onload = function () {
+  
+  function dollar_format(amount) {
+    var s = "";
+    s += amount;
+    return "$" + s.slice(0,3) + "," + s.slice(3,6)
+  }
+  
   function format(n, width) {
    var str = "" + n;
    for (var i = str.length; i < width; i++ ) {
@@ -21,8 +28,8 @@ window.onload = function () {
        colors: colors,
     });
   r.text(120, 30, "Raised").attr(txtattr1);
-  r.text(120, 110, "Goal\n$" + fund_raising_goal).attr(txtattr2);
-  r.text(120, 460, "$" + amount_raised).attr(txtattr2);
+  r.text(120, 110, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr2);
+  r.text(120, 460, dollar_format(amount_raised)).attr(txtattr2);
 
   c.barchart(10, 40, 220, 590, [[amount_raised], [fund_raising_goal-amount_raised]], 
      {
