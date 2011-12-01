@@ -8,6 +8,10 @@ var current_tax_rate = 19.37;
 var estimated_inflation = 0.005;
 var current_valuation = 212879100;
 
+function round_to_penny(amount) {
+  return Math.round(amount * 100) / 100
+}
+
 function debt_service_by_year(loan_amount, year_number) {
   if (year_number == 1) {
     return loan_amount * short_term_interest * 0.5;
@@ -22,7 +26,7 @@ function debt_service_by_year(loan_amount, year_number) {
     debt_service = principal_outstanding * long_term_interest + principal_payment
     principal_outstanding -= principal_payment;
   }
-  return debt_service;
+  return round_to_penny(debt_service);
 }
 
 // debt_service_by_year(1400000, 1)  => 14000
@@ -34,7 +38,7 @@ function debt_service_by_year(loan_amount, year_number) {
 function library_portion_of_tax_rate(loan_amount, year_number) {
   var new_valuation = current_valuation * Math.pow(1 + estimated_inflation, year_number) / 1000
   var debt_service = debt_service_by_year(loan_amount, year_number);
-  return debt_service/new_valuation;
+  return round_to_penny(debt_service/new_valuation);
 }
 
 // library_portion_of_tax_rate(1400000, 1)  => 0.06543783893630925
@@ -48,14 +52,14 @@ function total_debt_service(loan_amount) {
   for (var year = 1; year <= 22; year++) {
     debt_service += debt_service_by_year(loan_amount, year)
   }
-  return debt_service;
+  return round_to_penny(debt_service);
 }
 
 // total_debt_service(amount_of_bond) => 2100000.0000000005
 
 function additional_taxes_for_library(loan_amount, year_number, home_value) {
   var library_rate = library_portion_of_tax_rate(loan_amount, year_number);
-  return library_rate * home_value / 1000
+  return round_to_penny(library_rate * home_value / 1000)
 }
 
 // additional_taxes_for_library(1400000, 1, 100000)  => 6.543783893630925
@@ -75,7 +79,7 @@ function total_additional_taxes_for_library(loan_amount, home_value) {
   for (var year = 1; year <= 22; year++) {
     additional_taxes += additional_taxes_for_library(loan_amount, year, home_value)
   }
-  return additional_taxes;
+  return round_to_penny(additional_taxes);
 }
 
 // total_additional_taxes_for_library(1400000, 100000)  => 930.7340525345529
@@ -83,7 +87,7 @@ function total_additional_taxes_for_library(loan_amount, home_value) {
 
 function average_of_additional_library_taxes_per_week(loan_amount, home_value) {
   var library_taxes = total_additional_taxes_for_library(loan_amount, home_value)
-  return library_taxes / (22 * 52)
+  return round_to_penny(library_taxes / (22 * 52))
 }
 
 // average_of_additional_library_taxes_per_week(1400000, 243814)  => 1.9836188136770936
