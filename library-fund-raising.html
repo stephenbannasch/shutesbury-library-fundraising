@@ -4,14 +4,16 @@
   <meta charset="utf-8">
   <title>Library Fundraising Lowering Everyone's Tax Costs</title>
   <script src="raphael-min.js"></script>
-  <script src="g.raphael-min.js"></script>
-  <script src="g.bar-min.js"></script>
+  <script src="g.raphael.js"></script>
+  <script src="g.bar.js"></script>
   <script src="library-debt.js"></script>
   <style type="text/css" media="screen">
     body {
       margin: 12px 12px 12px 12px;
       background-color: white; 
-      width: 1024px; }
+      width: 1024px; 
+      font: 21px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      line-height: 1.1em; }
 
     h1 { 
       font: 40px 'Fontin Sans', Fontin-Sans, sans-serif; 
@@ -19,9 +21,7 @@
       margin-bottom: 8px; }
 
     p { 
-      font: 21px 'Fontin Sans', Fontin-Sans, sans-serif; 
-      line-height: 1.1em; 
-      margin: 0em 0em 1em 0em; }
+      margin: 0em 0em 0.5em 0em; }
 
     .reference { 
       font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
@@ -68,6 +68,37 @@
         height: 640px;
     }
 
+    #controls ul {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0px 0px 8px 0px;
+      padding: 0px; 
+      font-size: 0.8em;
+      font-weight: bold; }
+      #controls ul li {
+        line-height: 1em;
+        display: inline-table;
+        vertical-align: middle;
+        margin: 0px 0px;
+        padding: 0px 0px; }
+        #controls ul li select {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+        #controls ul li select option {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+        #controls ul li legend {
+          padding: 0px 3px; }
+        #controls ul li fieldset {
+          border-top: 2px solid #333333;
+          border-bottom: 2px solid #333333;
+          border-left: 2px solid #333333;
+          border-right: 2px solid #333333; }
+    #controls ul.right {
+      float: right; }
+
   </style>
 </head>
 <body>
@@ -81,15 +112,48 @@
         dramatically lowering how much the town will need to borrow.
       </p>
       <p>
-        When we reach our fund-raising goal of $400,000 the cost in additional taxes 
-        for the average Shutesbury household will have dropped almost <b>30%</b> from 
-        <b>$8.60</b> to just <b>$6.14</b> per month.
+        When we reach our fund-raising goal of $400,000 the cost per month 
+        for the average household in Shutesbury will have dropped almost 
+        <b>30%</b> from <b>$8.60</b> to just <b>$6.14</b> per month.
       </p>
       <p>
-        The average cost per month is calculated on the total increase in taxes for the 
-        average home in Shutesbury valued at $243,814 averaged over the 22 year life 
-        of the proposed loan from 2013 to 2034 
-        <span class="reference">(see: <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a>)</span>.
+        Change the values below to estimate different costs:
+      </p>
+      <div id='controls'>
+        <ul>
+          <li>
+            <fieldset>
+              <legend>Assessed Value</legend>
+              <select id='select-assessed-value'>
+                <option id="select-default-assessment" value='243814' selected>$243,814</option>
+                <option value="" disabled="disabled">other values ...</option>
+                <option value='100000'>$100,000</option>
+                <option value='150000'>$150,000</option>
+                <option value='200000'>$200,000</option>
+                <option value='250000'>$250,000</option>
+                <option value='300000'>$300,000</option>
+                <option value='350000'>$350,000</option>
+                <option value='400000'>$400,000</option>
+              </select>
+            </fieldset>
+          </li>
+          <li>
+            <fieldset>
+              <legend>Fundraising</legend>
+              <select id='select-amount-raised'>
+                <option id="select-default-amount-raised" value='154015' selected>$154,015</option>
+                <option value="" disabled="disabled">other values ...</option>
+                <option value='200000'>$200,000</option>
+                <option value='250000'>$250,000</option>
+                <option value='300000'>$300,000</option>
+                <option value='350000'>$350,000</option>
+              </select>
+            </fieldset>
+          </li>
+        </ul>
+      </div>
+      <p>
+        <span class="reference">see: <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a></span>.
       </p>
       <p>
         There will be additional savings to taxpayers if we spend less than $1,400,000 
@@ -110,4 +174,5 @@
   </p>
 </body>
 <script src="graph.js"></script>
+<script src="controls.js"></script>
 </html>

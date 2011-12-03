@@ -100,16 +100,25 @@ function average_of_additional_library_taxes_per_month(loan_amount, home_value) 
 }
 
 var average_valuation = 243814;
-var amount_raised = 154015;
-var actual_amount_of_bond = amount_of_bond - amount_raised;
-
 var fund_raising_goal = 400000;
-var goal_amount_of_bond = amount_of_bond - fund_raising_goal;
 
-var orig_average_weekly_cost = average_of_additional_library_taxes_per_week(amount_of_bond, average_valuation);
-var actual_average_weekly_cost = average_of_additional_library_taxes_per_week(actual_amount_of_bond, average_valuation);
-var goal_average_weekly_cost = average_of_additional_library_taxes_per_week(goal_amount_of_bond, average_valuation);
+var actual_amount_of_bond, goal_amount_of_bond, 
+   orig_average_weekly_cost, actual_average_weekly_cost, goal_average_weekly_cost,
+   orig_average_monthly_cost, actual_average_monthly_cost, goal_average_monthly_cost;
 
-var orig_average_monthly_cost = average_of_additional_library_taxes_per_month(amount_of_bond, average_valuation);
-var actual_average_monthly_cost = average_of_additional_library_taxes_per_month(actual_amount_of_bond, average_valuation);
-var goal_average_monthly_cost = average_of_additional_library_taxes_per_month(goal_amount_of_bond, average_valuation);
+function update_average_costs(assessed_value, amount_raised) {
+  actual_amount_of_bond = amount_of_bond - amount_raised;
+  goal_amount_of_bond = amount_of_bond - fund_raising_goal;
+  orig_average_weekly_cost = average_of_additional_library_taxes_per_week(amount_of_bond, assessed_value);
+  actual_average_weekly_cost = average_of_additional_library_taxes_per_week(actual_amount_of_bond, assessed_value);
+  goal_average_weekly_cost = average_of_additional_library_taxes_per_week(goal_amount_of_bond, assessed_value);
+  
+  orig_average_monthly_cost = average_of_additional_library_taxes_per_month(amount_of_bond, assessed_value);
+  actual_average_monthly_cost = average_of_additional_library_taxes_per_month(actual_amount_of_bond, assessed_value);
+  goal_average_monthly_cost = average_of_additional_library_taxes_per_month(goal_amount_of_bond, assessed_value);
+}
+
+var amount_raised = 154015;
+// var amount_raised = 254015;
+var assessed_value = average_valuation;
+update_average_costs(assessed_value, amount_raised);
