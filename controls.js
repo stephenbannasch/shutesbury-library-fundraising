@@ -11,6 +11,11 @@ var select_default_amount_raised = document.getElementById("select-default-amoun
 select_default_amount_raised.value = amount_raised;
 select_default_amount_raised.textContent = dollar_format(amount_raised);
 
+var select_tax_cost_time_period = document.getElementById("select-tax-cost-time-period");
+var select_default_tax_cost_time_period = document.getElementById("select-default-tax-cost-time-period");
+
+var title_amount_raised = document.getElementById("title-amount-raised");
+title_amount_raised.textContent = dollar_format(amount_raised);
 
 //
 // Assessed Value Selector
@@ -22,7 +27,6 @@ function selectAssessedValueChange() {
 }
 
 select_assessed_value.onchange = selectAssessedValueChange;
-// select_assessed_value.onchange();
 
 //
 // Fundraising Selector
@@ -34,6 +38,16 @@ function selectFundraisingChange() {
 }
 
 select_amount_raised.onchange = selectFundraisingChange;
-// select_amount_raised.onchange();
+
+//
+// Select Tax Time Period Selector
+//
+function selectTaxCostTimePeriodChange() {
+  tax_cost_time_period = select_tax_cost_time_period.value;
+  update_average_costs(assessed_value, amount_raised, tax_cost_time_period);
+  generate_graphs();
+}
+
+select_tax_cost_time_period.onchange = selectTaxCostTimePeriodChange;
 
 generate_graphs();

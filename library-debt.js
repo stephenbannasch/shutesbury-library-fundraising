@@ -8,6 +8,8 @@ var current_tax_rate = 19.37;
 var estimated_inflation = 0.005;
 var current_valuation = 212879100;
 
+var tax_cost_time_period = "month";
+
 function round_to_penny(amount) {
   return Math.round(amount * 100) / 100
 }
@@ -99,26 +101,74 @@ function average_of_additional_library_taxes_per_month(loan_amount, home_value) 
   return round_to_penny(library_taxes / (22 * 12))
 }
 
+function average_of_additional_library_taxes_per_quarter(loan_amount, home_value) {
+  var library_taxes = total_additional_taxes_for_library(loan_amount, home_value)
+  return round_to_penny(library_taxes / (22 * 4))
+}
+
+function average_of_additional_library_taxes_per_year(loan_amount, home_value) {
+  var library_taxes = total_additional_taxes_for_library(loan_amount, home_value)
+  return round_to_penny(library_taxes / 22)
+}
+
 var average_valuation = 243814;
 var fund_raising_goal = 400000;
 
 var actual_amount_of_bond, goal_amount_of_bond, 
    orig_average_weekly_cost, actual_average_weekly_cost, goal_average_weekly_cost,
-   orig_average_monthly_cost, actual_average_monthly_cost, goal_average_monthly_cost;
+   orig_average_monthly_cost, actual_average_monthly_cost, goal_average_monthly_cost,
+   orig_average_quarterly_cost, actual_average_quarterly_cost, goal_average_quarterly_cost,
+   orig_average_yearly_cost, actual_average_yearly_cost, goal_average_yearly_cost;
 
 function update_average_costs(assessed_value, amount_raised) {
   actual_amount_of_bond = amount_of_bond - amount_raised;
   goal_amount_of_bond = amount_of_bond - fund_raising_goal;
+  
+  // weekly costs
   orig_average_weekly_cost = average_of_additional_library_taxes_per_week(amount_of_bond, assessed_value);
   actual_average_weekly_cost = average_of_additional_library_taxes_per_week(actual_amount_of_bond, assessed_value);
   goal_average_weekly_cost = average_of_additional_library_taxes_per_week(goal_amount_of_bond, assessed_value);
   
+  // monthly costs
   orig_average_monthly_cost = average_of_additional_library_taxes_per_month(amount_of_bond, assessed_value);
   actual_average_monthly_cost = average_of_additional_library_taxes_per_month(actual_amount_of_bond, assessed_value);
   goal_average_monthly_cost = average_of_additional_library_taxes_per_month(goal_amount_of_bond, assessed_value);
+
+  // quarterly costs
+  orig_average_quarterly_cost = average_of_additional_library_taxes_per_quarter(amount_of_bond, assessed_value);
+  actual_average_quarterly_cost = average_of_additional_library_taxes_per_quarter(actual_amount_of_bond, assessed_value);
+  goal_average_quarterly_cost = average_of_additional_library_taxes_per_quarter(goal_amount_of_bond, assessed_value);
+
+  // yearly costs
+  orig_average_yearly_cost = average_of_additional_library_taxes_per_year(amount_of_bond, assessed_value);
+  actual_average_yearly_cost = average_of_additional_library_taxes_per_year(actual_amount_of_bond, assessed_value);
+  goal_average_yearly_cost = average_of_additional_library_taxes_per_year(goal_amount_of_bond, assessed_value);
+
+  switch(tax_cost_time_period) {
+    case "week":
+      orig_average_cost = orig_average_weekly_cost;
+      actual_average_cost = actual_average_weekly_cost;
+      goal_average_cost = goal_average_weekly_cost;
+      break;
+    case "month":
+      orig_average_cost = orig_average_monthly_cost;
+      actual_average_cost = actual_average_monthly_cost;
+      goal_average_cost = goal_average_monthly_cost;
+      break;
+    case "quarter":
+      orig_average_cost = orig_average_quarterly_cost;
+      actual_average_cost = actual_average_quarterly_cost;
+      goal_average_cost = goal_average_quarterly_cost;
+      break;
+    case "year":
+      orig_average_cost = orig_average_yearly_cost;
+      actual_average_cost = actual_average_yearly_cost;
+      goal_average_cost = goal_average_yearly_cost;
+      break;
+  }
 }
 
-var amount_raised = 154015;
+var amount_raised = 159865;
 // var amount_raised = 254015;
 var assessed_value = average_valuation;
 update_average_costs(assessed_value, amount_raised);

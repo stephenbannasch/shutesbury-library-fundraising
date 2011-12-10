@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Library Fundraising Lowering Everyone's Tax Costs</title>
+  <title>Library Fundraising Lowers Everyone's Tax Costs</title>
   <script src="raphael-min.js"></script>
   <script src="g.raphael.js"></script>
   <script src="g.bar.js"></script>
@@ -16,17 +16,23 @@
       line-height: 1.1em; }
 
     h1 { 
-      font: 40px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      font: 36px 'Fontin Sans', Fontin-Sans, sans-serif; 
       font-weight: bold; 
       margin-bottom: 8px; }
 
     p { 
-      margin: 0em 0em 0.5em 0em; }
+      margin: 0em 0em 0.5em 0em; 
+      line-height: 1.05em; }
 
     .reference { 
       font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic; }
     
+    .menu-reference  { 
+        font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
+        font-style: italic; 
+        font-weight: bold; }
+
     #footer {
       font: 14px 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic;
@@ -68,6 +74,17 @@
         height: 640px;
     }
 
+    #controls legend {
+      padding: 0px 3px; }
+      #controls legend select {
+        font-size: 1.0em;
+        line-height: 1em;
+        font-weight: bold }
+        #controls legend select option {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+    
     #controls ul {
       display: inline-block;
       list-style-type: none;
@@ -102,22 +119,22 @@
   </style>
 </head>
 <body>
-  <h1>Library Fundraising Lowering Everyone's Tax Costs</h1>
+  <h1><span id="title-amount-raised"></span> Raised for Library Lowers Everyone's Tax Costs</h1>
   <ul>
     <li id="raised"></li>
     <li id="cost"></li>
     <li id='description'>
       <p>
-        Private fund-raising for the new Shutesbury Library and Community Center is 
-        dramatically lowering how much the town will need to borrow.
+        Raising funds dramatically reduces what the Town will need to borrow to 
+        build the new Shutesbury Library and Community Center.
       </p>
       <p>
-        When we reach our fund-raising goal of $400,000 the cost per month 
-        for the average household in Shutesbury will have dropped almost 
+        When fundraising reaches $400,000 the additional tax on the average 
+        property in Shutesbury assessed at $243,814 will have dropped almost 
         <b>30%</b> from <b>$8.60</b> to just <b>$6.14</b> per month.
       </p>
       <p>
-        Change the values below to estimate different costs:
+        You can estimate what your tax cost will be by changing the selections below:
       </p>
       <div id='controls'>
         <ul>
@@ -128,11 +145,17 @@
                 <option id="select-default-assessment" value='243814' selected>$243,814</option>
                 <option value="" disabled="disabled">other values ...</option>
                 <option value='100000'>$100,000</option>
+                <option value='125000'>$125,000</option>
                 <option value='150000'>$150,000</option>
+                <option value='175000'>$175,000</option>
                 <option value='200000'>$200,000</option>
+                <option value='225000'>$225,000</option>
                 <option value='250000'>$250,000</option>
+                <option value='275000'>$275,000</option>
                 <option value='300000'>$300,000</option>
+                <option value='325000'>$320,000</option>
                 <option value='350000'>$350,000</option>
+                <option value='375000'>$375,000</option>
                 <option value='400000'>$400,000</option>
               </select>
             </fieldset>
@@ -147,10 +170,21 @@
                 <option value='250000'>$250,000</option>
                 <option value='300000'>$300,000</option>
                 <option value='350000'>$350,000</option>
+                <option value='400000'>$400,000</option>
               </select>
             </fieldset>
           </li>
         </ul>
+        <p>
+          <legend>Estimate Taxes by:
+            <select id='select-tax-cost-time-period'>
+              <option value='week'>week</option>
+              <option id="select-default-tax-cost-time-period" value='month' selected>month</option>
+              <option value='quarter'>quarter</option>
+              <option value='year'>year</option>
+            </select>
+          </legend>
+        </p>
       </div>
       <p>
         <span class="reference">see: <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a></span>.
@@ -160,7 +194,7 @@
         to build the library by using volunteers and donated materials.
       </p>
       <p>
-        Help make the new Shutesbury Library and Community Center possible by talking
+        Help make the new Shutesbury Library and Community Center a reality by talking
         with your neighbors, making a
         <a href="https://sites.google.com/site/friendsshutesburylibrary/donate/donate-to-the-new-library">
           donation</a> and joining the <a href="http://www.YesForLibrary.com">Yes For Library</a> group!
