@@ -79,10 +79,11 @@
                         "z"
                     ];
                 } else {
-                    half = ~~(width / 2);
+                    var half = ~~(width / 2);
+                    var half2 = half/2;
                     path = [
                         "M", x + half, y,
-                        "l", -width, 0, 0, -mmax(height - half, 0), half, -mmin(half, height), half, mmin(half, height), half,
+                        "l", -width, 0, 0, -mmax(height-half2, 0), half, -mmin(half2, height), half, mmin(half2, height), half,
                         "z"
                     ];
                 }
