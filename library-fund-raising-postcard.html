@@ -21,6 +21,13 @@
     
     The gray border enclosing the front and back postcard renderings is meant to
     show the boundaries of what should be the image sent for printing.
+    
+    The final images should be 1240x845 which has a ratio of 1.467
+    The interior area for composing is 1180x785
+    
+    When converting the HTML rendering to an image for uploading to 
+    http://www.overnightprints.com for use in a 4x6 postcard the image
+    must be scaled %150 resulting in a final dimension of 1860x1267
    -->
   <style type="text/css" media="screen">
     body {
@@ -33,19 +40,19 @@
 
     #front {
       margin: 12px 12px 12px 12px;
-      padding: 26px 19px 26px 19px;
+      padding: 30px 30px 30px 30px;
       background-color: white; 
-      width: 1202px;
-      height: 793px;
+      width: 1180px;
+      height: 785px;
       font: 21px 'Fontin Sans', Fontin-Sans, sans-serif; 
       line-height: 1.1em; }
 
     #back {
       margin: 12px 12px 12px 12px;
-      padding: 26px 19px 26px 19px;
+      padding: 30px 30px 30px 30px;
       background-color: white; 
-      width: 1202px;
-      height: 793px;
+      width: 1180px;
+      height: 785px;
       font: 36px 'Fontin Sans', Fontin-Sans, sans-serif; 
       line-height: 1.1em; }
 
@@ -99,14 +106,14 @@
     ul {
       width: 100%;
       margin: 0px;
-      padding: 0px 12px 0px 12px;
+      padding: 0px 0px 0px 12px;
       display: inline-block;
       list-style-type: none; }
       ul li {
         line-height: 1em;
         display: inline-table;
         vertical-align: middle;
-        margin: 0.5em 0.5em;
+        margin: 0.5em 0.0em 0.5em 0.5em;
         padding: 0.2em 0.5em 0.2em 0em; }
     
     #raised {
@@ -126,7 +133,7 @@
         background-color: #eee;
     }
     #description {
-        width: 620px;
+        width: 610px;
         height: 640px;
     }
 
