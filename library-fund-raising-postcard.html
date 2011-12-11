@@ -7,39 +7,55 @@
   <script src="g.raphael.js"></script>
   <script src="g.bar.js"></script>
   <script src="library-debt.js"></script>
+  <!-- 
+    The nominal size of the postcard is 6" wide and 4" tall
+    The pixel goal is width: 1240, height: 825
+    However http://www.overnightprints.com recommends the following guidelines for a 4x6" postcard:
+    
+      Bleed Size	 4.25" x 6.25"
+      Trim Size	   4" x 6"
+      Safe Zone	   3.875" x 5.875"
+    
+    The 4x6 Trim Size ratio is 1.50 however the actual image files sent should 
+    have a ratio corresponding to the Bleed Size which is 1.47
+    
+    The gray border enclosing the front and back postcard renderings is meant to
+    show the boundaries of what should be the image sent for printing.
+   -->
   <style type="text/css" media="screen">
     body {
-      margin: 10px 10px 10px 10px;
-      padding: 0px 0px 0px 0px;
-      background-color: white; 
+      margin: 10px;
+      padding: 10px;
+      background-color: #ccc; 
       width: 1280px;
       font: 18px 'Fontin Sans', Fontin-Sans, sans-serif; 
       line-height: 1.1em; }
 
     #front {
       margin: 12px 12px 12px 12px;
-      padding: 12px 12px 12px 12px;
+      padding: 26px 19px 26px 19px;
       background-color: white; 
-      width: 1214px;
-      height: 799px;
-      border: 1px solid #cccccc;
-      font: 22px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      width: 1202px;
+      height: 793px;
+      font: 21px 'Fontin Sans', Fontin-Sans, sans-serif; 
       line-height: 1.1em; }
 
     #back {
       margin: 12px 12px 12px 12px;
-      padding: 12px 12px 12px 12px;
+      padding: 26px 19px 26px 19px;
       background-color: white; 
-      width: 1214px;
-      height: 799px;
-      border: 1px solid #cccccc;
+      width: 1202px;
+      height: 793px;
       font: 36px 'Fontin Sans', Fontin-Sans, sans-serif; 
       line-height: 1.1em; }
+
+    #front-content {
+      margin: 0px; }
 
     h1 { 
       font: 40px 'Fontin Sans', Fontin-Sans, sans-serif; 
       font-weight: bold; 
-      margin: 12px 12px 8px 12px; }
+      margin: 4px 12px 8px 12px; }
 
     p { 
       margin: 0em 0em 0.5em 0em; 
@@ -52,12 +68,14 @@
 
     #return-address {
       float: left;
-      padding: 4px; }
+      margin: 20px;
+      padding: 8px; }
 
     #place-stamp-here {
       float: right;
       width: 220px;
       height: 220px;
+      margin: 20px 24px;
       padding: 80px 12px 12px 80px;
       font-size: 48px;
       border: 1px solid #cccccc; }
@@ -75,7 +93,7 @@
       font: 20px 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic;
       font-weight: bold;
-      margin: 0px;
+      margin: 8px 0px 12px 0px;
       padding: 0px 20px 0px 20px; }
 
     ul {
@@ -83,8 +101,7 @@
       margin: 0px;
       padding: 0px 12px 0px 12px;
       display: inline-block;
-      list-style-type: none;
-      margin: 0.5em 0em 0.5em 0em; }
+      list-style-type: none; }
       ul li {
         line-height: 1em;
         display: inline-table;
@@ -109,7 +126,7 @@
         background-color: #eee;
     }
     #description {
-        width: 630px;
+        width: 620px;
         height: 640px;
     }
 
@@ -189,7 +206,7 @@
   <p class="label">4x6" color postcard: front side</p>
   <div id="front">
     <h1><span id="title-amount-raised"></span> Raised for Library Lowers Everyone's Tax Costs</h1>
-    <div>
+    <div id="front-content">
       <ul>
         <li id="raised"></li>
         <li id="cost"></li>
@@ -227,7 +244,7 @@
       http://deanbrook.org/new-library/library-fund-raising-postcard.html
     </div>
   </div>
-  <p class="label">back side</p>
+  <p class="label">4x6" color postcard: back side</p>
   <div id="back">
     <div id="return-address">
       <p>
