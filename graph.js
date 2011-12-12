@@ -24,9 +24,10 @@ var r = Raphael("raised"),
     c = Raphael("cost"),
     colors1 = ['#ff0000','#00ff00','#ffffff'],
     colors2 = ['#00ff00','#ff0000','#ffffff'],
-    txtattr1 = { font: "30px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold"},
+    txtattr1 = { font: "30px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold" },
     txtattr2 = { font: "30px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold", fill: "#fff" },
-    txtattr3 = { font: "26px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold" };
+    txtattr3 = { font: "26px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold" },
+    txtattr4 = { font: "18px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold", "font-style": "italic" };
 
 function generate_graphs() {
   var r_ytop = 70, r_ybot = 570, r_yextent = r_ybot-r_ytop,
@@ -44,6 +45,7 @@ function generate_graphs() {
     r.text(120, r_ytop + 80, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr1);
   }
   r.text(120, (r_ybot + 100) - raised * r_yextent, dollar_format(amount_raised) + "\nRaised").attr(txtattr2);
+  r.text(120, (r_ytop + r_ybot - 3), "as of Dec 10 2011").attr(txtattr4);
 
   var c_ytop = 80, c_ybot = 560, c_yextent = c_ybot-c_ytop;
   c.remove();
@@ -60,4 +62,5 @@ function generate_graphs() {
    if (amount_raised < fund_raising_goal) {
      c.text(120, c_ybot + 30, "Goal " + dollar_format(goal_average_cost, 5)).attr(txtattr3);
     }
+    c.text(120, (c_ytop + c_ybot - 3), "on average property").attr(txtattr4);
 }
