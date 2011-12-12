@@ -25,19 +25,19 @@ function make_table() {
   
   var value = 100000;
   add_column("Assessment", dollar_format(value));
-  add_column("Weekly", dollar_format(average_of_additional_library_taxes_per_week(actual_amount_of_bond, value)));
-  add_column("Monthly", dollar_format(average_of_additional_library_taxes_per_month(actual_amount_of_bond, value)));
-  add_column("Quarterly", dollar_format(average_of_additional_library_taxes_per_quarter(actual_amount_of_bond, value)));
   add_column("Yearly", dollar_format(average_of_additional_library_taxes_per_year(actual_amount_of_bond, value)));
+  add_column("Quarterly", dollar_format(average_of_additional_library_taxes_per_quarter(actual_amount_of_bond, value)));
+  add_column("Monthly", dollar_format(average_of_additional_library_taxes_per_month(actual_amount_of_bond, value)));
+  add_column("Weekly", dollar_format(average_of_additional_library_taxes_per_week(actual_amount_of_bond, value)));
   value += 25000;
 
   for (var value = 125000; value < 400000; value += 25000) {
     results_row = add_row();
     add_data(results_row, dollar_format(value));
-    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_week(actual_amount_of_bond, value)));
-    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_month(actual_amount_of_bond, value)));
-    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_quarter(actual_amount_of_bond, value)));
     add_data(results_row, dollar_format(average_of_additional_library_taxes_per_year(actual_amount_of_bond, value)));
+    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_quarter(actual_amount_of_bond, value)));
+    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_month(actual_amount_of_bond, value)));
+    add_data(results_row, dollar_format(average_of_additional_library_taxes_per_week(actual_amount_of_bond, value)));
   }
 
   // var results = [];
