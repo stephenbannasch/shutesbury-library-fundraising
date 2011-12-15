@@ -168,7 +168,6 @@ function update_average_costs(assessed_value, amount_raised) {
   }
 }
 
-var amount_raised = 159865;
-// var amount_raised = 254015;
+var amount_raised = 160424;
 var assessed_value = average_valuation;
 update_average_costs(assessed_value, amount_raised);
