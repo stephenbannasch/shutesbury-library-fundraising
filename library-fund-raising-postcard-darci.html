@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Library Fundraising Lowers Everyone's Tax Costs</title>
+  <script src="raphael-min.js"></script>
+  <script src="g.raphael.js"></script>
+  <script src="g.bar.js"></script>
+  <script src="library-debt.js"></script>
+  <!-- 
+    The nominal size of the postcard is 6" wide and 4" tall
+    The basic pixel goal is width: 1240, height: 825
+    However http://www.overnightprints.com recommends the following guidelines for a 4x6" postcard:
+    
+      Bleed Size	 4.25" x 6.25"
+      Trim Size	   4" x 6"
+      Safe Zone	   3.875" x 5.875"
+    
+    The 4x6 Trim Size ratio is 1.50 however the actual image files sent should 
+    have a ratio corresponding to the Bleed Size which is 1.47
+    
+    The gray border enclosing the front and back postcard renderings is meant to
+    show the boundaries of what should be the image sent for printing.
+    
+    The final images should be 1240x845 which has a ratio of 1.467
+    The interior area for composing is 1180x785
+    
+    When converting the HTML rendering to an image for uploading to 
+    http://www.overnightprints.com for use in a 4x6 postcard the image
+    must be scaled %150 resulting in a final dimension of 1860x1267
+   -->
+  <style type="text/css" media="screen">
+    body {
+      margin: 10px;
+      padding: 10px;
+      background-color: #ccc; 
+      width: 1280px;
+      font: 18px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      line-height: 1.1em; }
+
+    #front {
+      position: relative;
+      margin: 12px 12px 12px 12px;
+      padding: 30px 30px 30px 30px;
+      background-color: white; 
+      width: 1180px;
+      height: 785px;
+      font: 24px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      line-height: 1.1em; }
+
+    #equals {
+      position: absolute;
+      top: 120px;
+      left: 294px;
+      width: 20px;
+      height: 20px; 
+      font: 64px sans-serif;
+      font-weight: bold; }
+
+    #back {
+      position: relative;
+      margin: 12px 12px 12px 12px;
+      padding: 30px 30px 30px 30px;
+      background-color: white; 
+      width: 1180px;
+      height: 785px;
+      font: 36px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      line-height: 1.1em; }
+
+    #front-content {
+      margin: 0px; }
+
+    h1 { 
+      font: 40px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      font-weight: bold; 
+      margin: 4px 12px 8px 12px; }
+
+    a {
+      font: 'Fontin Sans', Fontin-Sans, sans-serif;
+      font-weight: 600;
+      font-style: italic;
+      color: black;
+      text-decoration:none; }
+
+    p { 
+      margin: 0em 0em 0.5em 0em; 
+      line-height: 1.05em; }
+
+    .label { 
+      margin: 1em 1em 1em 1em; 
+      font-size: 24;
+      font-style: italic; }
+
+    #please-vote {
+      font-size: 150%; }
+
+    #return-address {
+      float: left;
+      margin: 20px;
+      padding: 8px; }
+
+    #place-stamp-here {
+      float: right;
+      width: 220px;
+      height: 220px;
+      margin: 20px 24px;
+      padding: 80px 12px 12px 80px;
+      font-size: 48px;
+      border: 1px solid #cccccc; }
+
+    .reference { 
+      font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
+      font-style: italic; }
+    
+    .menu-reference  { 
+        font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
+        font-style: italic; 
+        font-weight: bold; }
+
+    #footer {
+      font: 20px 'Fontin Sans', Fontin-Sans, sans-serif;
+      font-style: italic;
+      font-weight: bold;
+      margin: 8px 0px 12px 0px;
+      padding: 0px 20px 0px 20px; }
+
+    ul {
+      width: 100%;
+      margin: 0px;
+      padding: 0px 0px 0px 12px;
+      display: block;
+      list-style-type: none; }
+      ul li {
+        line-height: 1em;
+        display: inline-table;
+        vertical-align: middle;
+        margin: 0.5em 0.0em 0.5em 0.5em;
+        padding: 0.2em 0.5em 0.2em 0em; }
+    
+    #raised {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px #666;
+        width: 230px;
+        height: 640px;
+        background-color: #eee;
+    }
+    #cost {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px #666;
+        width: 230px;
+        height: 640px;
+        background-color: #eee;
+    }
+    #description {
+        width: 620px;
+        height: 640px;
+    }
+
+    #back-table {
+        position: absolute;
+        bottom: 40px;
+        left: 50px;
+        width: 480px;
+        font: 21px 'Fontin Sans', Fontin-Sans, sans-serif; 
+    }
+
+    tr:nth-child(odd)    { background-color:#eee; }
+    tr:nth-child(even)    { background-color:#fff; }
+    
+    #datatable {
+      margin: 0em 0em 0.5em 0em; 
+      font: 17px 'Fontin Sans', Fontin-Sans, sans-serif;
+      border-collapse: collapse; }
+      #datatable th {
+        padding: 0 0.6em;
+        text-align: left; }
+      #datatable td {
+        border-top: 1px solid #cccccc;
+        padding: 0.2em 1em; }
+      #datatable ul {
+        display: inline-block;
+        list-style-type: none;
+        margin: 0.5em 0em 0.5em 0em;
+        width: 90%; }
+        #datatable ul li {
+          line-height: 1em;
+          display: inline-table;
+          vertical-align: top;
+          padding: 0.2em 1em 0.2em 0em; }
+          #datatable ul li fieldset {
+            height: 2.2em;
+            vertical-align: middle;
+            width: 100%;
+            border-bottom: 0px;
+            border-left: 0px;
+            border-right: 0px; }
+    
+    #controls legend {
+      padding: 0px 3px; }
+      #controls legend select {
+        font-size: 1.0em;
+        line-height: 1em;
+        font-weight: bold }
+        #controls legend select option {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+    
+    #controls ul {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0px 0px 8px 0px;
+      padding: 0px; 
+      font-size: 0.8em;
+      font-weight: bold; }
+      #controls ul li {
+        line-height: 1em;
+        display: inline-table;
+        vertical-align: middle;
+        margin: 0px 0px;
+        padding: 0px 0px; }
+        #controls ul li select {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+        #controls ul li select option {
+          font-size: 1.0em;
+          line-height: 1em;
+          font-weight: bold }
+        #controls ul li legend {
+          padding: 0px 3px; }
+        #controls ul li fieldset {
+          border-top: 2px solid #333333;
+          border-bottom: 2px solid #333333;
+          border-left: 2px solid #333333;
+          border-right: 2px solid #333333; }
+    #controls ul.right {
+      float: right; }
+
+  </style>
+</head>
+<body>
+  <p class="label">4x6" color postcard: front side</p>
+  <div id="front">
+    <h1><span id="title-amount-raised"></span> Raised for Library Lowers Everyone's Tax Costs</h1>
+    <div id="front-content">
+      <ul>
+        <li id="raised"></li>
+        <li id="cost"></li>
+        <li id='description'>
+          <p><b>Did you know?</b></p>
+          <p>
+            Reaching our fundraising goal will reduce the projected 
+            monthly taxes by almost <b>30%</b> to only <b>$6.14</b> a month for the average
+            property in Shutesbury. Utilizing volunteers and donated materials will offer 
+            additional savings and further reduce the current estimated cost.
+          </p>
+          <p><b>Learn more!</b></p>
+          <p>
+            Visit <a href="http://www.mnspear.org/">www.mnspear.org</a>
+            the library website, attend an upcoming library event. Further details can 
+            be found on the website under Upcoming Events.
+          </p>
+          <p><b>Get Involved!</b></p>
+          <p>
+            Help make the new Shutesbury Library and Community Center a reality.
+            Talk to your neighbors, make a donation, join the community campaign 
+            at <a href="http://www.yesforlibrary.com">YesForLibrary.com</a>
+          </p>
+          <p><b>Vote Yes!!</b></p>
+          <p>
+            Cast your vote of support on January 10, 2012 at the town hall or by 
+            absentee ballot before noon on January 9th at the town clerks office.
+          </p>
+        </li>
+      </ul>
+    </div>
+    <div id="equals">=</div>
+    <div id="footer"> 
+      http://deanbrook.org/new-library/library-fund-raising.html
+    </div>
+  </div>
+  <p class="label">4x6" color postcard: back side</p>
+  <div id="back">
+    <div id="return-address">
+      <p>
+        Stephen Bannasch<br />
+        106 Sand Hill Road<br />
+        Shutesbury MA 01072<br />
+      </p>
+    </div>
+    <div id="place-stamp-here">
+      <p>
+        place<br />
+        stamp<br />
+        here<br />
+      </p>
+    </div>
+    <div id="back-table">
+      <p><b>Library Tax Cost Calculator</b></p>
+      <p>
+        Based on the projected $1.4M in expenses Shutesbury would be responsible for.
+      </p>
+      <p>
+        And the $160,424 in private donations and pledges raised so far.
+      </p>
+      <p>
+        Select the value closest to your property assessment in the table below
+        to estimate your additional tax averaged over the 22-year life of the loan:
+      </p>
+      <table id="datatable"></table>
+    </div>
+  </div>
+</body>
+<script src="graph.js"></script>
+<script src="table.js"></script>
+</html>
