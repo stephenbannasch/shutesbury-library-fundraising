@@ -45,5 +45,3 @@ function selectTaxCostTimePeriodChange() {
 }
 
 select_tax_cost_time_period.onchange = selectTaxCostTimePeriodChange;
-
-generate_graphs();

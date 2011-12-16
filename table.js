@@ -48,8 +48,4 @@ function make_table() {
   // add_column("per Month", dollar_format(results[0][1]));
 }
 
-var title_amount_raised = document.getElementById("title-amount-raised");
-title_amount_raised.textContent = dollar_format(amount_raised);
-
-generate_graphs();
 make_table();
