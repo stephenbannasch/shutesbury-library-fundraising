@@ -62,5 +62,5 @@ function generate_graphs() {
   if (amount_raised < fund_raising_goal) {
     c.text(85, c_ybot + 35, "Goal " + dollar_format(goal_average_cost, 5)).attr(txtattr3);
    }
-   c.text(85, (c_ytop + c_ybot), "on average property\nassessment: " + dollar_format(average_valuation)).attr(txtattr4);
+   c.text(85, (c_ytop + c_ybot + 5), "on " + dollar_format(average_valuation) + " average\n property assessment").attr(txtattr4);
 }
