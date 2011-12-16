@@ -14,10 +14,6 @@ select_default_amount_raised.textContent = dollar_format(amount_raised);
 var select_tax_cost_time_period = document.getElementById("select-tax-cost-time-period");
 var select_default_tax_cost_time_period = document.getElementById("select-default-tax-cost-time-period");
 
-var title_amount_raised = document.getElementById("title-amount-raised");
-title_amount_raised.textContent = dollar_format(amount_raised);
-
-//
 // Assessed Value Selector
 //
 function selectAssessedValueChange() {

@@ -45,7 +45,7 @@ function generate_graphs() {
     r.text(120, r_ytop + 80, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr1);
   }
   r.text(120, (r_ybot + 100) - raised * r_yextent, dollar_format(amount_raised) + "\nRaised").attr(txtattr2);
-  r.text(120, (r_ytop + r_ybot + 5), "as of Dec 10 2011").attr(txtattr4);
+  r.text(120, (r_ytop + r_ybot + 5), "as of " + amount_raised_date).attr(txtattr4);
 
   var c_ytop = 80, c_ybot = 540, c_yextent = c_ybot-c_ytop;
   c.remove();
