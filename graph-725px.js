@@ -1,25 +1,3 @@
-
-function format(n, width) {
- var str = "" + n;
- for (var i = str.length; i < width; i++ ) {
-   str += "0";
- }
- return str.slice(0,width)
-}
-
-function dollar_format(amount) {
-  var s = "" + amount;
-  var parts = s.split('.');
-  if (parts.length == 1) { parts.push("0") }
-  if (parts[0].length > 3) {
-    parts[0] = parts[0].slice(0,3) + "," + parts[0].slice(3,6)
-    parts[1] = "";
-  } else {
-    parts[1] = "." + format(+parts[1], 2);
-  }
-  return "$" + parts[0] + parts[1];
-}
-
 var r = Raphael("raised"),
    c = Raphael("cost"),
    colors1 = ['#ff0000','#00ff00','#ffffff'],
