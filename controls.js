@@ -27,6 +27,7 @@ custom_assessment_fragment.appendChild(custom_assessment_input);
 function selectAssessedValueChange() {
   if (select_assessed_value.value == "custom") {
     select_assessment_fragment.appendChild(select_assessed_value.parentNode.replaceChild(custom_assessment_fragment, select_assessed_value));
+    custom_assessment_input.focus();
     if (+custom_assessment_input.value == 0) { return };
     assessed_value = custom_assessment_input.value
   } else {
