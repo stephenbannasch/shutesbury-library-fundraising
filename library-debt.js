@@ -168,7 +168,7 @@ function update_average_costs(assessed_value, amount_raised) {
   }
 }
 
-var amount_raised = 160424;
-var amount_raised_date = "Dec 10 2011";
+var amount_raised = 165946;
+var amount_raised_date = "Dec 30 2011";
 var assessed_value = average_valuation;
 update_average_costs(assessed_value, amount_raised);
