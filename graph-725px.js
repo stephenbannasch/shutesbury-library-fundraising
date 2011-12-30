@@ -30,7 +30,7 @@ var r = Raphael("raised"),
    txtattr4 = { font: "14px 'Fontin Sans', Fontin-Sans, sans-serif", "font-weight": "bold", "font-style": "italic" };
 
 function generate_graphs() {
- var r_ytop = 70, r_ybot = 555, r_yextent = r_ybot-r_ytop,
+ var r_ytop = 70, r_ybot = 545, r_yextent = r_ybot-r_ytop,
      raised = amount_raised / fund_raising_goal;
  r.remove();
  r = Raphael("raised");
@@ -47,7 +47,7 @@ function generate_graphs() {
  r.text(85, (r_ybot + 100) - raised * r_yextent, dollar_format(amount_raised) + "\nRaised").attr(txtattr2);
  r.text(85, (r_ytop + r_ybot - 3), "as of " + amount_raised_date).attr(txtattr4);
 
- var c_ytop = 80, c_ybot = 545, c_yextent = c_ybot-c_ytop;
+ var c_ytop = 80, c_ybot = 535, c_yextent = c_ybot-c_ytop;
  c.remove();
  c = Raphael("cost");
  c.barchart(-10, c_ytop, 190, c_ybot, [[fund_raising_goal-amount_raised], [amount_raised]], 
