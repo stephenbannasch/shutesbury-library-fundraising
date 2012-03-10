@@ -7,13 +7,38 @@ select_default_assessment.value = average_valuation;
 select_default_assessment.textContent = dollar_format(average_valuation);
 
 var select_amount_raised = document.getElementById("select-amount-raised");
-var select_default_amount_raised = document.getElementById("select-default-amount-raised");
+var select_default_amount_raised;
+function updateAmoutRaisedSelector() {
+  var children = Sizzle("#select-amount-raised > *");
+  for(var i = 0; i < children.length; i++) {
+    select_amount_raised.removeChild(children[i]);
+  }
+  select_default_amount_raised = document.createElement("option");
+  select_default_amount_raised.value = amount_raised;
+  select_default_amount_raised.textContent = dollar_format(amount_raised);
+  select_amount_raised.appendChild(select_default_amount_raised);
+  var option = document.createElement("option");
+  option.value = "";
+  option.diabled = "disabled";
+  option.textContent = "other values ...";
+  select_amount_raised.appendChild(option);
+  for (var amount = Math.round(amount_raised/100000) * 100000; amount <= fund_raising_goal; amount += 100000) {
+    option = document.createElement("option");
+    option.value = amount;
+    option.textContent = dollar_format(amount);
+    select_amount_raised.appendChild(option);
+  }
+}
 
 var select_goal = document.getElementById("select-goal");
 
 var select_tax_cost_time_period = document.getElementById("select-tax-cost-time-period");
 var select_default_tax_cost_time_period = document.getElementById("select-default-tax-cost-time-period");
 
+//
+// A collection of spans who have numbers and text that will be updated
+// dynamically when the user changes assumptions on the page.
+//
 var fund_raising_goal_spans = Sizzle("span.goal");
 var tax_cost_time_period_spans = Sizzle("span.tax-cost-time-period");
 var tax_cost_incremental_spans = Sizzle("span.tax-cost-incremental");
@@ -51,11 +76,6 @@ function updateSpans() {
   }
 }
 
-updateSpans();
-
-select_default_amount_raised.value = amount_raised;
-select_default_amount_raised.textContent = dollar_format(amount_raised);
-
 if (select_goal) {
   select_goal.value = fund_raising_goal;
 }
@@ -67,7 +87,7 @@ custom_assessment_input.type = 'text';
 custom_assessment_fragment.appendChild(custom_assessment_input);
 
 //
-// Assessed Value Selector
+// "Assessed Value for Property" Selector
 //
 function selectAssessedValueChange() {
   if (select_assessed_value.value == "custom") {
@@ -96,7 +116,7 @@ custom_assessment_input.onchange = inputCustomAssessmentChange;
 custom_assessment_input.onblur = inputCustomAssessmentChange;
 
 //
-// Fundraising Selector
+// "Funds Raised" Selector
 //
 function selectFundraisingChange() {
   amount_raised = +select_amount_raised.value;
@@ -107,12 +127,13 @@ function selectFundraisingChange() {
 select_amount_raised.onchange = selectFundraisingChange;
 
 //
-// Fundraising Goal Selector
+// "Goal": Fundraising Goal Selector
 //
 function selectFundraisingGoalChange() {
   fund_raising_goal = +select_goal.value;
   update_average_costs(assessed_value, amount_raised);
   updateSpans();
+  updateAmoutRaisedSelector();
   generate_graphs();
 }
 
@@ -121,7 +142,7 @@ if (select_goal) {
 }
 
 //
-// Select Tax Time Period Selector
+// "Estimate Taxes by": Select Tax Time Period Selector
 //
 function selectTaxCostTimePeriodChange() {
   tax_cost_time_period = select_tax_cost_time_period.value;
@@ -131,4 +152,6 @@ function selectTaxCostTimePeriodChange() {
 }
 
 select_tax_cost_time_period.onchange = selectTaxCostTimePeriodChange;
+
+updateAmoutRaisedSelector();
 selectTaxCostTimePeriodChange();
