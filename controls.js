@@ -56,7 +56,11 @@ function updateSpans() {
   }
 
   for(var i = 0; i < tax_cost_time_period_spans.length; i++) {
-    tax_cost_time_period_spans[i].textContent = tax_cost_time_period + "ly";
+    if (tax_cost_time_period == "total") {
+      tax_cost_time_period_spans[i].textContent = tax_cost_time_period;
+    } else {
+      tax_cost_time_period_spans[i].textContent = tax_cost_time_period + "ly";
+    }
   }
 
   for(var i = 0; i < tax_cost_incremental_spans.length; i++) {

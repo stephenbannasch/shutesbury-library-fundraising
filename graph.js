@@ -35,7 +35,11 @@ function generate_graphs() {
         type: "square", 
         colors: colors2,
      }).scale(1, -1.0);
-   c.text(120, 50, "Lower Added\ntax per " + tax_cost_time_period).attr(txtattr1);
+   if (tax_cost_time_period == "total") {
+     c.text(120, 50, "Lower Added\ntax " + tax_cost_time_period).attr(txtattr1);
+   } else {
+     c.text(120, 50, "Lower Added\ntax per " + tax_cost_time_period).attr(txtattr1);
+   }
    c.text(120, 140, "From\n" + dollar_format(orig_average_cost, 4)).attr(txtattr1);
    c.text(120, (10 + c_ytop) + percent_raised * c_yextent, "To " + dollar_format(actual_average_cost, 5)).attr(txtattr2);
    if (amount_raised < fund_raising_goal) {

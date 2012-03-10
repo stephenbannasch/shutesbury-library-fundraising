@@ -165,6 +165,11 @@ function update_average_costs(assessed_value, amount_raised) {
       actual_average_cost = actual_average_yearly_cost;
       goal_average_cost = goal_average_yearly_cost;
       break;
+    case "total":
+      orig_average_cost = total_additional_taxes_for_library(amount_of_bond, assessed_value)
+      actual_average_cost = total_additional_taxes_for_library(actual_amount_of_bond, assessed_value);
+      goal_average_cost = total_additional_taxes_for_library(goal_amount_of_bond, assessed_value);
+      break;
   }
 }
 
