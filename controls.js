@@ -20,7 +20,7 @@ function updateAmoutRaisedSelector() {
   var option = document.createElement("option");
   option.value = "";
   option.diabled = "disabled";
-  option.textContent = "other values ...";
+  option.textContent = "projections ...";
   select_amount_raised.appendChild(option);
   for (var amount = Math.round(amount_raised/100000) * 100000; amount <= fund_raising_goal; amount += 100000) {
     option = document.createElement("option");
