@@ -24,7 +24,11 @@ function generate_graphs() {
     r.text(120, r_ytop + 80, "Goal\n" + dollar_format(fund_raising_goal)).attr(txtattr1);
   }
   r.text(120, (r_ybot + 100) - percent_raised * r_yextent, dollar_format(amount_raised) + "\nRaised").attr(txtattr2);
-  r.text(120, (r_ytop + r_ybot + 5), "as of " + amount_raised_date).attr(txtattr4);
+  if (amount_raised == actual_amount_raised) {
+    r.text(120, (r_ytop + r_ybot + 5), "as of " + amount_raised_date).attr(txtattr4);
+  } else {
+    r.text(120, (r_ytop + r_ybot + 5), "future projection").attr(txtattr4);
+  }
 
   var c_ytop = 80, c_ybot = 530, c_yextent = c_ybot-c_ytop;
   c.remove();
