@@ -123,12 +123,12 @@ var actual_amount_of_bond, goal_amount_of_bond,
 function update_average_costs(assessed_value, amount_raised) {
   actual_amount_of_bond = amount_of_bond - amount_raised;
   goal_amount_of_bond = amount_of_bond - fund_raising_goal;
-  
+
   // weekly costs
   orig_average_weekly_cost = average_of_additional_library_taxes_per_week(amount_of_bond, assessed_value);
   actual_average_weekly_cost = average_of_additional_library_taxes_per_week(actual_amount_of_bond, assessed_value);
   goal_average_weekly_cost = average_of_additional_library_taxes_per_week(goal_amount_of_bond, assessed_value);
-  
+
   // monthly costs
   orig_average_monthly_cost = average_of_additional_library_taxes_per_month(amount_of_bond, assessed_value);
   actual_average_monthly_cost = average_of_additional_library_taxes_per_month(actual_amount_of_bond, assessed_value);
@@ -168,7 +168,7 @@ function update_average_costs(assessed_value, amount_raised) {
   }
 }
 
-var amount_raised = 170316;
+var amount_raised = 191564.84;
 var amount_raised_date = "Dec 30 2011";
 var assessed_value = average_valuation;
 update_average_costs(assessed_value, amount_raised);
