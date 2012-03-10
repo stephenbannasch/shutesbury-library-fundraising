@@ -39,7 +39,7 @@
 
     p {
       margin: 0em 0em 0.5em 0em;
-      line-height: 1.05em; }
+      line-height: 1.1em; }
 
     #please-vote {
       font-size: 115%;
@@ -56,14 +56,18 @@
         font-weight: bold; }
 
     #footer {
-      margin: 0em 8em 2em 2em;
-      padding: 0px 20px 0px 20px; }
+      font: 24px 'Fontin Sans', Fontin-Sans, sans-serif;
+      margin: 0em 4em 1em 2em;
+      padding: 0em 1em 0em 1em }
+      #footer p {
+        line-height: 1.1em;
+        margin: 0.2em 0em; }
 
     #under-footer {
       font: 14px 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic;
-      margin: 0em 8em 2em 2em;
-      padding: 0px 20px 0px 20px; }
+      margin: 0em 4em 1em 2em;
+      padding: 0em 1em 0em 1em }
 
     ul {
       width: 100%;
@@ -152,8 +156,8 @@
       </p>
       <iframe width="560" height="315" src="http://www.youtube.com/embed/tUQ1vdJQWn0" frameborder="0" allowfullscreen></iframe>
       <p>
-        A month ago an anonymous donor gave $100,000 for matching new donations. A new donation
-        of $100 will become $200!
+        A month ago an anonymous donor gave a $100,000 matching grant. A new donation
+        of $100 will now raise $200 for the library!
       </p>
       <p>
         Estimate your tax costs over the 22 years of short and long-term
@@ -187,9 +191,9 @@
           </li>
           <li>
             <fieldset>
-              <legend>Fundraising</legend>
+              <legend>Funds Raised</legend>
               <select id='select-amount-raised'>
-                <option id="select-default-amount-raised" value='154015' selected>$154,015</option>
+                <option id="select-default-amount-raised" value='' selected></option>
                 <option value="" disabled="disabled">other values ...</option>
                 <option value='250000'>$250,000</option>
                 <option value='300000'>$300,000</option>
@@ -198,21 +202,36 @@
               </select>
             </fieldset>
           </li>
+          <li>
+            <fieldset>
+              <legend>Goal</legend>
+              <select id='select-goal'>
+                <option value='400000'>$400,000</option>
+                <option value='600000'>$600,000</option>
+                <option value='800000'>$800,000</option>
+                <option value='1000000'>$1,000,000</option>
+                <option value='1200000'>$1,200,000</option>
+                <option value='1400000'>$1,400,000</option>
+              </select>
+            </fieldset>
+          </li>
         </ul>
         <p>
           <legend>Estimate Taxes by:
             <select id='select-tax-cost-time-period'>
-              <option value='week'>week</option>
-              <option id="select-default-tax-cost-time-period" value='month' selected>month</option>
+              <option id="select-default-tax-cost-time-period" value='year' selected>year</option>
               <option value='quarter'>quarter</option>
-              <option value='year'>year</option>
+              <option value='month'>month</option>
+              <option value='week'>week</option>
             </select>
           </legend>
         </p>
       </div>
       <p>
-        Reaching our goal of $400,000 drops the additional monthly tax on the average
-        property almost <b>30%</b> from  <b>$8.60</b> to just <b>$6.14</b>.
+        Reaching our goal of <b><span class="goal">$400,000</span></b> drops the
+        additional <span class="tax-cost-time-period">monthly</span> tax on the average
+        property almost <b><span class="goal-percent"></span></b> from <b><span class="original-tax-cost-incremental">$8.60</b>
+        to just <b><span class="goal-tax-cost-incremental">$6.14<span></b>.
       </p>
     </li>
   </ul>
@@ -226,9 +245,7 @@
   </div>
   <div id="under-footer">
     <p>
-      Raising $400,000 drops the additional monthly tax on the average property almost
-      <b>30%</b> from  <b>$8.60</b> to just <b>$6.14</b>. <span class="reference">see:
-      <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a></span>.
+      Financial modeling based on this document released by the Shutesbiury Finance Committee: <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a>.
     </p>
     <p>
       The html and JavaScript code that generate this page can be found here: 

@@ -9,11 +9,56 @@ select_default_assessment.textContent = dollar_format(average_valuation);
 var select_amount_raised = document.getElementById("select-amount-raised");
 var select_default_amount_raised = document.getElementById("select-default-amount-raised");
 
-select_default_amount_raised.value = amount_raised;
-select_default_amount_raised.textContent = dollar_format(amount_raised);
+var select_goal = document.getElementById("select-goal");
 
 var select_tax_cost_time_period = document.getElementById("select-tax-cost-time-period");
 var select_default_tax_cost_time_period = document.getElementById("select-default-tax-cost-time-period");
+
+var fund_raising_goal_spans = Sizzle("span.goal");
+var tax_cost_time_period_spans = Sizzle("span.tax-cost-time-period");
+var tax_cost_incremental_spans = Sizzle("span.tax-cost-incremental");
+var original_tax_cost_incremental_spans = Sizzle("span.original-tax-cost-incremental");
+var goal_tax_cost_incremental_spans = Sizzle("span.goal-tax-cost-incremental");
+var goal_percent_spans = Sizzle("span.goal-percent");
+
+function updateSpans() {
+  for(var i = 0; i < original_tax_cost_incremental_spans.length; i++) {
+    original_tax_cost_incremental_spans[i].textContent = dollar_format(orig_average_cost);
+  }
+
+  for(var i = 0; i < fund_raising_goal_spans.length; i++) {
+    fund_raising_goal_spans[i].textContent = dollar_format(fund_raising_goal);
+  }
+
+  for(var i = 0; i < tax_cost_time_period_spans.length; i++) {
+    tax_cost_time_period_spans[i].textContent = tax_cost_time_period + "ly";
+  }
+
+  for(var i = 0; i < tax_cost_incremental_spans.length; i++) {
+    tax_cost_incremental_spans[i].textContent = dollar_format(actual_average_cost);
+  }
+
+  for(var i = 0; i < original_tax_cost_incremental_spans.length; i++) {
+    original_tax_cost_incremental_spans[i].textContent = dollar_format(orig_average_cost);
+  }
+
+  for(var i = 0; i < original_tax_cost_incremental_spans.length; i++) {
+    goal_tax_cost_incremental_spans[i].textContent = dollar_format(goal_average_cost);
+  }
+
+  for(var i = 0; i < goal_percent_spans.length; i++) {
+    goal_percent_spans[i].textContent = Math.floor((1 - goal_average_cost/orig_average_cost) * 100) + "%";
+  }
+}
+
+updateSpans();
+
+select_default_amount_raised.value = amount_raised;
+select_default_amount_raised.textContent = dollar_format(amount_raised);
+
+if (select_goal) {
+  select_goal.value = fund_raising_goal;
+}
 
 var select_assessment_fragment = document.createDocumentFragment();
 var custom_assessment_fragment = document.createDocumentFragment();
@@ -62,12 +107,28 @@ function selectFundraisingChange() {
 select_amount_raised.onchange = selectFundraisingChange;
 
 //
+// Fundraising Goal Selector
+//
+function selectFundraisingGoalChange() {
+  fund_raising_goal = +select_goal.value;
+  update_average_costs(assessed_value, amount_raised);
+  updateSpans();
+  generate_graphs();
+}
+
+if (select_goal) {
+  select_goal.onchange = selectFundraisingGoalChange;
+}
+
+//
 // Select Tax Time Period Selector
 //
 function selectTaxCostTimePeriodChange() {
   tax_cost_time_period = select_tax_cost_time_period.value;
   update_average_costs(assessed_value, amount_raised, tax_cost_time_period);
   generate_graphs();
+  updateSpans();
 }
 
 select_tax_cost_time_period.onchange = selectTaxCostTimePeriodChange;
+selectTaxCostTimePeriodChange();
