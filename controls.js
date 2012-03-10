@@ -14,8 +14,8 @@ function updateAmoutRaisedSelector() {
     select_amount_raised.removeChild(children[i]);
   }
   select_default_amount_raised = document.createElement("option");
-  select_default_amount_raised.value = amount_raised;
-  select_default_amount_raised.textContent = dollar_format(amount_raised);
+  select_default_amount_raised.value = actual_amount_raised;
+  select_default_amount_raised.textContent = dollar_format(actual_amount_raised);
   select_amount_raised.appendChild(select_default_amount_raised);
   var option = document.createElement("option");
   option.value = "";
@@ -28,6 +28,7 @@ function updateAmoutRaisedSelector() {
     option.textContent = dollar_format(amount);
     select_amount_raised.appendChild(option);
   }
+  select_amount_raised.value = actual_amount_raised;
 }
 
 var select_goal = document.getElementById("select-goal");
@@ -135,6 +136,9 @@ select_amount_raised.onchange = selectFundraisingChange;
 //
 function selectFundraisingGoalChange() {
   fund_raising_goal = +select_goal.value;
+  if (amount_raised > fund_raising_goal) {
+    amount_raised = actual_amount_raised;
+  }
   update_average_costs(assessed_value, amount_raised);
   updateSpans();
   updateAmoutRaisedSelector();
