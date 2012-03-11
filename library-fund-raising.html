@@ -12,9 +12,9 @@
     body {
       margin: 12px 12px 12px 12px;
       position: relative;
-      background-color: white; 
-      width: 1024px; 
-      font: 20px 'Fontin Sans', Fontin-Sans, sans-serif; 
+      background-color: white;
+      width: 1200px;
+      font: 20px 'Fontin Sans', Fontin-Sans, sans-serif;
       line-height: 1.1em; }
 
     #equals {
@@ -32,34 +32,42 @@
       color: black;
       text-decoration:none; }
 
-    h1 { 
-      font: 36px 'Fontin Sans', Fontin-Sans, sans-serif; 
-      font-weight: bold; 
+    h1 {
+      font: 36px 'Fontin Sans', Fontin-Sans, sans-serif;
+      font-weight: bold;
       margin-bottom: 8px; }
 
-    p { 
-      margin: 0em 0em 0.5em 0em; 
-      line-height: 1.05em; }
+    p {
+      margin: 0em 0em 0.5em 0em;
+      line-height: 1.1em; }
 
     #please-vote {
       font-size: 115%;
-      font-weight: bold; 
+      font-weight: bold;
       line-height: 1.1em; }
 
-    .reference { 
+    .reference {
       font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic; }
-    
-    .menu-reference  { 
+
+    .menu-reference  {
         font: 0.9em 'Fontin Sans', Fontin-Sans, sans-serif;
-        font-style: italic; 
+        font-style: italic;
         font-weight: bold; }
 
     #footer {
+      font: 24px 'Fontin Sans', Fontin-Sans, sans-serif;
+      margin: 0em 4em 1em 2em;
+      padding: 0em 1em 0em 1em }
+      #footer p {
+        line-height: 1.1em;
+        margin: 0.2em 0em; }
+
+    #under-footer {
       font: 14px 'Fontin Sans', Fontin-Sans, sans-serif;
       font-style: italic;
-      margin: 0px;
-      padding: 0px 20px 0px 20px; }
+      margin: 0em 4em 1em 2em;
+      padding: 0em 1em 0em 1em }
 
     ul {
       width: 100%;
@@ -71,10 +79,10 @@
       ul li {
         line-height: 1em;
         display: inline-table;
-        vertical-align: middle;
+        vertical-align: top;
         margin: 0.5em 0.0em 0.5em 0.5em;
         padding: 0.2em 0.5em 0.2em 0em; }
-    
+
     #raised {
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
@@ -92,7 +100,7 @@
         background-color: #eee;
     }
     #description {
-        width: 430px;
+        width: 620px;
         height: 640px;
     }
 
@@ -103,12 +111,12 @@
         line-height: 1em;
         padding: 0px 5px;
         font-weight: bold; }
-    
+
     #controls ul {
       display: inline-block;
       list-style-type: none;
       margin: 0px 0px 8px 0px;
-      padding: 0px; 
+      padding: 0px;
       font-size: 0.8em;
       font-weight: bold; }
       #controls ul li {
@@ -144,19 +152,23 @@
     <li id="cost"></li>
     <li id='description'>
       <p>
-        Fundraising is dramatically reducing what Shutesbury needs to borrow to 
-        build our new Library and Community Center.
+        People in 37 states and 15 countries have given Shutesbury almost $10,000 to help build
+        our new Library after watching this <a href="http://www.youtube.com/watch?v=tUQ1vdJQWn0">video</a>.
+      </p>
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/tUQ1vdJQWn0" frameborder="0" allowfullscreen></iframe>
+      <p>
+        A month ago an anonymous donor gave a $100,000 matching grant. A new donation
+        of $100 will now raise $200 for the library!
       </p>
       <p>
-        Based on the <span class="amount-raised"></span> raised so far, you can estimate  
-        your average additional tax costs over the 22 years of short and long-term 
-        loans by changing the selections below:
+        Estimate your tax costs over the 22 years of short and long-term
+        loans based on the <span class="amount-raised"></span> raised so far:
       </p>
       <div id='controls'>
         <ul>
           <li>
             <fieldset>
-              <legend>Assessed Value</legend>
+              <legend>Assessed Value for Property</legend>
               <select id='select-assessed-value'>
                 <option id="select-default-assessment" value='243814' selected>$243,814</option>
                 <option value="" disabled="disabled">other values ...</option>
@@ -180,11 +192,10 @@
           </li>
           <li>
             <fieldset>
-              <legend>Fundraising</legend>
+              <legend>Funds Raised</legend>
               <select id='select-amount-raised'>
-                <option id="select-default-amount-raised" value='154015' selected>$154,015</option>
+                <option id="select-default-amount-raised" value='' selected></option>
                 <option value="" disabled="disabled">other values ...</option>
-                <option value='200000'>$200,000</option>
                 <option value='250000'>$250,000</option>
                 <option value='300000'>$300,000</option>
                 <option value='350000'>$350,000</option>
@@ -192,46 +203,62 @@
               </select>
             </fieldset>
           </li>
+          <li>
+            <fieldset>
+              <legend>Goal</legend>
+              <select id='select-goal'>
+                <option value='400000'>$400,000</option>
+                <option value='600000'>$600,000</option>
+                <option value='800000'>$800,000</option>
+                <option value='1000000'>$1,000,000</option>
+                <option value='1200000'>$1,200,000</option>
+                <option value='1400000'>$1,400,000</option>
+              </select>
+            </fieldset>
+          </li>
         </ul>
         <p>
           <legend>Estimate Taxes by:
             <select id='select-tax-cost-time-period'>
-              <option value='week'>week</option>
-              <option id="select-default-tax-cost-time-period" value='month' selected>month</option>
+              <option value='total'>total</option>
+              <option id="select-default-tax-cost-time-period" value='year' selected>year</option>
               <option value='quarter'>quarter</option>
-              <option value='year'>year</option>
+              <option value='month'>month</option>
+              <option value='week'>week</option>
             </select>
           </legend>
         </p>
       </div>
       <p>
-        <span class="reference">see: <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a></span>.
-      </p>
-      <p>
-        Raising $400,000 drops the additional monthly tax on the average
-        property almost <b>30%</b> from  <b>$8.60</b> to just <b>$6.14</b>.
-      </p>
-      <p>
-        There will be additional savings to taxpayers if we spend less than the
-        current estimate of $1,400,000 needed to build the library by using 
-        volunteers and donated materials.
-      </p>
-      <p>
-        Help us create a new Shutesbury Library and Community Center! 
-        Talk with your neighbors, make a donation at <a href="http://www.mnspear.org/">www.mnspear.org</a>
-        and join our community campaign at <a href="http://www.yesforlibrary.com">YesForLibrary.com</a>
-      </p>
-      <p id="please-vote">
-        Please vote <b>YES</b> on January 10, 2012!
+        Reaching our goal of <b><span class="goal">$400,000</span></b> drops the
+        additional <span class="tax-cost-time-period">monthly</span> tax on the average
+        property almost <b><span class="goal-percent"></span></b> from <b><span class="original-tax-cost-incremental">$8.60</b>
+        to just <b><span class="goal-tax-cost-incremental">$6.14<span></b>.
       </p>
     </li>
   </ul>
   <div id="equals">=</div>
-  <p id="footer">
-    The html and JavaScript code that generate this page can be found here: 
-    <a href="https://github.com/stephenbannasch/shutesbury-library-fundraising">
+  <div id="footer">
+    <p>
+      Help us create a new Shutesbury Library by making a donation at the
+      <a href="https://sites.google.com/site/friendsshutesburylibrary/">Friends of the Library</a>
+      page and joining our community campaign at <a href="http://www.yesforlibrary.com">YesForLibrary.com</a>.
+    </p>
+  </div>
+  <div id="under-footer">
+    <p>
+      Last updated: <span class="last-updated"></span>.
+    </p>
+    <p>
+      Financial projections based on <a href="http://mnspear.org/MultivalueTax-1M.pdf">MultivalueTax-1M.pdf</a>
+      released by the Shutesbury Finance Committee in Dec 2011.
+    </p>
+    <p>
+      The html and JavaScript code that generate this page can be found here: 
+      <a href="https://github.com/stephenbannasch/shutesbury-library-fundraising">
       github.com/stephenbannasch/shutesbury-library-fundraising</a>.
-  </p>
+    </p>
+  </div>
 </body>
 <script src="formatter.js"></script>
 <script src="graph.js"></script>
