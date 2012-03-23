@@ -173,8 +173,8 @@ function update_average_costs(assessed_value, amount_raised) {
   }
 }
 
-var actual_amount_raised = 191564.84;
+var actual_amount_raised = 211160.00;
 var amount_raised = actual_amount_raised;
-var amount_raised_date = "Mar 10, 2012";
+var amount_raised_date = "Mar 23, 2012";
 var assessed_value = average_valuation;
 update_average_costs(assessed_value, amount_raised);
